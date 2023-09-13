@@ -9,14 +9,18 @@ def find_face_encodings(image_path):
     return face_enc[0]
 
 def main():
-    # getting face encodings for first image
-    image_1 = find_face_encodings("images/gerrad1.jpg")
-    # getting face encodings for second image
-    image_2  = find_face_encodings("images/obama1.jpg")
+    try:
+        # getting face encodings for first image
+        image_1 = find_face_encodings("images/gerrad1.jpg")
+        # getting face encodings for second image
+        image_2  = find_face_encodings("images/gerrad2.jpg")
 
-    # checking both images are same
-    is_same = face_recognition.compare_faces([image_1], image_2)[0]
-    print(f"Is Same: {is_same}")
+        # checking both images are same
+        is_same = face_recognition.compare_faces([image_1], image_2)[0]
+        print(f"Is Same: {is_same}")
+    except Exception as e:
+        print(e)
+
     if is_same:
         # finding the distance level between images
         distance = face_recognition.face_distance([image_1], image_2)
