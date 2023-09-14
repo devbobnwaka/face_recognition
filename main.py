@@ -19,8 +19,8 @@ def find_face_encodings(image_path):
     return face_enc[0]
 
 
-def main():
-    uploaded_image  = find_face_encodings("uploads/gerrad2.jpg")
+def main(file_path):
+    uploaded_image  = find_face_encodings(file_path)
 
     for row in all_encodings_data:
         image_encoding_bytes = row[0]
@@ -44,8 +44,8 @@ def main():
             else:
                 print(f"The current image not same name: {row[1]}")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
 
 
 
