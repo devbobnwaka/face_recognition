@@ -12,7 +12,9 @@ def find_face_encodings(image_path):
     # return face encodings
     return face_enc[0]
 
-
+def take_photo():
+    print('Photo taken')
+    
 def open_image(panel):
     global file_path
     file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg *.jpeg *.png *.gif *.bmp *.ppm *.pgm")])
@@ -23,11 +25,6 @@ def open_image(panel):
         photo = ImageTk.PhotoImage(image)
         panel.config(image=photo)
         panel.image = photo  # Keep a reference to prevent garbage collection
-
-# def run_search(*args):
-#     global db_data
-#     db_data = db_data
-#     compare_upload_face_db(db_data, *args)
 
 def compare_upload_face_db(panel, message, db_data):
     global file_path
@@ -58,7 +55,7 @@ def compare_upload_face_db(panel, message, db_data):
                 photo = ImageTk.PhotoImage(image)
                 panel.config(image=photo)
                 panel.image = photo  # Keep a reference to prevent garbage collection
-                message.config(text='Image Found')
+                message.config(text=f'Image Found {accuracy}%')
                 return photo
             else:
                 message.config(text="Image not found")

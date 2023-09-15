@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import filedialog, ttk
 from PIL import ImageTk, Image
 
-def run_gui(open_image, run_search, db_data):
+def run_gui(open_image, run_search, take_photo, db_data):
     root = Tk()
     root.geometry('600x500')
 
@@ -35,7 +35,8 @@ def run_gui(open_image, run_search, db_data):
 
     #### Button SIDE BY SIDE ################
     frame2 = ttk.Frame(root, padding=10)
-    frame2.pack(side='left', expand=True, fill=BOTH)
+    # frame2.pack()
+    frame2.pack(expand=True, fill=BOTH)
 
     btn1 = Button(frame2, text="Select Image", bd = '5', padx=10, pady=10,  command=lambda:open_image(panel1))
     btn2 = Button(frame2, text="Search Image Database", bd = '5', padx=10, pady=10, command=lambda:run_search(panel2, message, db_data))
@@ -51,6 +52,9 @@ def run_gui(open_image, run_search, db_data):
     frame2.rowconfigure(0, weight=1)
 
     #### END Button SIDE BY SIDE ################
-
+    frame3 = ttk.Frame(root, padding=10)
+    frame3.pack(side='bottom', expand=True, fill=BOTH)
+    take_photo = Button(frame3, text="Take Photo", bd = '5', padx=10, pady=10, command=take_photo)
+    take_photo.pack()
 
     root.mainloop()
