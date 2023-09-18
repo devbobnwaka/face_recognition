@@ -10,10 +10,10 @@ def find_face_encodings(image_path):
     # get face encodings from the image
     face_enc = face_recognition.face_encodings(image)
     # return face encodings
+    print(face_enc)
     return face_enc[0]
 
-def take_photo():
-    print('Photo taken')
+# find_face_encodings('C:\\Users\\60004821\\Desktop\\python\\face_recognition\\images\\lawrence2.jpg')
     
 def open_image(panel):
     global file_path

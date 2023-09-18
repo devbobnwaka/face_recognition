@@ -1,8 +1,8 @@
 from src.db_config import DatabaseConfig
+from src.camera import capture_image
 from src.gui import run_gui
 from src.utils import (
     open_image,
-    take_photo,
     compare_upload_face_db,
     )
 
@@ -13,7 +13,7 @@ def main():
     sql_statement = 'SELECT image_encoding, name, image_path FROM face_recognition_images'
     db_data = db.retrieve_data(cursor, sql_statement)
 
-    run_gui(open_image, compare_upload_face_db, take_photo, db_data)
+    run_gui(open_image, compare_upload_face_db, capture_image, db_data)
 
 
 

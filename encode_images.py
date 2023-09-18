@@ -1,9 +1,9 @@
 import os
 import sqlite3
 import numpy as np
-from main import find_face_encodings
+# from main import find_face_encodings
 
-
+from src.utils import find_face_encodings
 """
 Encode all images
 
