@@ -1,10 +1,11 @@
 import cv2
 import time
+from .utils import compare_upload_face_db
 
 
 camera = cv2.VideoCapture(0)
 
-def capture_image():
+def capture_image(panel, message, db_data):
     while(True):
         ret, frame = camera.read()
 
