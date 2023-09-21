@@ -1,11 +1,13 @@
+import os
 import cv2
 import time
-from .utils import compare_upload_face_db
+from PIL import ImageTk, Image
 
 
 camera = cv2.VideoCapture(0)
 
-def capture_image(panel, message, db_data):
+def capture_image(panel):
+    global file_path
     while(True):
         ret, frame = camera.read()
 
@@ -16,8 +18,16 @@ def capture_image(panel, message, db_data):
                 relative_file_path = f"uploads/captured_image__{time.time()}.jpg"
                 res = cv2.imwrite(relative_file_path, frame)
                 print("Image captured.")
-                if res:
-                    return relative_file_path
+
+                file_path = relative_file_path
+                 # Open and display the selected image
+                image = Image.open(file_path)
+                photo = ImageTk.PhotoImage(image)
+                panel.config(image=photo)
+                panel.image = photo  # Keep a reference to prevent garbage collection
+
+            #     if res:
+            #         return relative_file_path
             break
   
     # After the loop release the cap object

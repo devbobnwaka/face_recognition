@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import filedialog, ttk
 from PIL import ImageTk, Image
+from .utils import resize_image
 
 
 def run_gui(open_image, run_search, capture_image, db_data):
@@ -16,8 +17,10 @@ def run_gui(open_image, run_search, capture_image, db_data):
     #### IMAGE SIDE BY SIDE ################
     frame = ttk.Frame(root, padding=10)
     frame.pack()
-
-    placeholder = ImageTk.PhotoImage(Image.open("C:/Users/60004821/Desktop/python/face_recognition/assests/placeholder.png"))
+    
+    # original_placeholder = ImageTk.PhotoImage(Image.open("assests/placeholder.png"))
+    # placeholder = resize_image(original_placeholder, 100, 100)
+    placeholder = ImageTk.PhotoImage(Image.open("assests/placeholder.png"))
 
     panel1 = Label(frame, image=placeholder, padx=10, pady=10)
     panel2 = Label(frame, image=placeholder, padx=10, pady=10)
@@ -39,7 +42,7 @@ def run_gui(open_image, run_search, capture_image, db_data):
     # frame2.pack()
     frame2.pack(expand=True, fill=BOTH)
 
-    btn1 = Button(frame2, text="Select Image", bd = '5', padx=10, pady=10,  command=lambda:open_image(panel1))
+    btn1 = Button(frame2, text="Select Image", bd = '5', padx=10, pady=10,  command=lambda:open_image(panel1, panel2))
     btn2 = Button(frame2, text="Search Image Database", bd = '5', padx=10, pady=10, command=lambda:run_search(panel2, message, db_data))
     # setting the application
     btn1.grid(row=1, column=0, sticky="nsew", padx=3, pady=3,)
@@ -55,7 +58,7 @@ def run_gui(open_image, run_search, capture_image, db_data):
     #### END Button SIDE BY SIDE ################
     frame3 = ttk.Frame(root, padding=10)
     frame3.pack(side='bottom', expand=True, fill=BOTH)
-    take_photo = Button(frame3, text="Take Photo", bd = '5', padx=10, pady=10, command=capture_image)
+    take_photo = Button(frame3, text="Take Photo", bd = '5', padx=10, pady=10, command=lambda:capture_image(panel1, panel2))
     take_photo.pack()
 
     root.mainloop()

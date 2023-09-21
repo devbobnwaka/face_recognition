@@ -1,9 +1,9 @@
 from src.db_config import DatabaseConfig
-from src.camera import capture_image
 from src.gui import run_gui
 from src.utils import (
     open_image,
     compare_upload_face_db,
+    capture_image
     )
 
 
